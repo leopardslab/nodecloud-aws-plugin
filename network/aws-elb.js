@@ -1,4 +1,4 @@
-const helpers = require('../helpers');
+const helpers = require("../helpers");
 
 const { checkParams } = helpers;
 class ELB {
@@ -17,6 +17,7 @@ class ELB {
       this._elb = new this._AWS.ELB();
     }
   }
+
   /**
    * Create load balancer
    * @create
@@ -35,6 +36,7 @@ class ELB {
       });
     });
   }
+
   /**
    * Delete load balancer
    * @delete
@@ -53,6 +55,7 @@ class ELB {
       });
     });
   }
+
   /**
    * Describe load balancers
    * @list
@@ -71,6 +74,7 @@ class ELB {
       });
     });
   }
+
   /**
    * Add tags to specified load balancer
    * @list
@@ -89,6 +93,7 @@ class ELB {
       });
     });
   }
+
   /**
    * Remove tags from specified load balancer
    * @list

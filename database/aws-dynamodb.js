@@ -1,4 +1,4 @@
-const helpers = require('../helpers');
+const helpers = require("../helpers");
 
 const { checkParams } = helpers;
 class DynamoDB {
@@ -17,6 +17,7 @@ class DynamoDB {
       this._dynamodb = new this._AWS.DynamoDB();
     }
   }
+
   /**
    * Create item
    * @createItem
@@ -36,6 +37,7 @@ class DynamoDB {
       });
     });
   }
+
   /**
    * Delete item
    * @deleteItem
@@ -55,6 +57,7 @@ class DynamoDB {
       });
     });
   }
+
   /**
    * Update item
    * @updateItem
@@ -74,6 +77,7 @@ class DynamoDB {
       });
     });
   }
+
   /**
    * Query
    * @query

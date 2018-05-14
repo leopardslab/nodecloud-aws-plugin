@@ -1,4 +1,4 @@
-const helpers = require('../helpers');
+const helpers = require("../helpers");
 
 const { checkParams } = helpers;
 class ECS {
@@ -17,6 +17,7 @@ class ECS {
       this._ecs = new this._AWS.ECS();
     }
   }
+
   /**
    * Create ECS cluster
    * @createCluster
@@ -35,6 +36,7 @@ class ECS {
       });
     });
   }
+
   /**
    * Delete ECS cluster
    * @deleteCluster
@@ -53,6 +55,7 @@ class ECS {
       });
     });
   }
+
   /**
    * Describe ECS clusters
    * @deleteCluster
@@ -71,6 +74,7 @@ class ECS {
       });
     });
   }
+
   /**
    * Create ECS instance
    * @createCluster
@@ -89,6 +93,7 @@ class ECS {
       });
     });
   }
+
   /**
    * Delete ECS services
    * @deleteService
@@ -107,6 +112,7 @@ class ECS {
       });
     });
   }
+
   /**
    * Describe ECS services
    * @describeServices
@@ -125,6 +131,7 @@ class ECS {
       });
     });
   }
+
   /**
    * Describe ECS container instances
    * @describeContainerInstances

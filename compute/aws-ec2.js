@@ -10,6 +10,7 @@ class EC2 {
     this._apiVersion = options.apiVersion;
     this._ec2 = new this._AWS.EC2({ apiVersion: this._apiVersion });
   }
+
   /**
    * Create EC2 instance
    * @create
@@ -19,7 +20,7 @@ class EC2 {
   create(params, instanceParams) {
     // Create the instance
     return new Promise((resolve, reject) => {
-      if (!params) reject(new Error('Provide params to EC2'));
+      if (!params) reject(new Error("Provide params to EC2"));
 
       this._ec2.runInstances(params, (err, data) => {
         if (err) reject(err);
@@ -31,11 +32,11 @@ class EC2 {
           Tags: [
             {
               Key: instanceParams.Key,
-              Value: instanceParams.Value,
-            },
-          ],
+              Value: instanceParams.Value
+            }
+          ]
         };
-        this._ec2.createTags(ec2Params, (error) => {
+        this._ec2.createTags(ec2Params, error => {
           if (error) reject(err);
 
           resolve(instanceId);
@@ -43,6 +44,7 @@ class EC2 {
       });
     });
   }
+
   /**
    * Describes one or more of your instances
    * @list
@@ -51,7 +53,11 @@ class EC2 {
   list(params) {
     return new Promise((resolve, reject) => {
       if (!params) {
-        reject(new Error('Error: Supply params, find docs on http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/EC2.html#describeInstances-property'));
+        reject(
+          new Error(
+            "Error: Supply params, find docs on http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/EC2.html#describeInstances-property"
+          )
+        );
       }
       this._ec2.describeInstances(params, (err, data) => {
         if (err) {
@@ -62,6 +68,7 @@ class EC2 {
       });
     });
   }
+
   /**
    * Start instance
    * @start
@@ -78,6 +85,7 @@ class EC2 {
       });
     });
   }
+
   /**
    * Stop instance
    * @stop
@@ -94,6 +102,7 @@ class EC2 {
       });
     });
   }
+
   /**
    * Reboot instance
    * @reboot
@@ -110,6 +119,7 @@ class EC2 {
       });
     });
   }
+
   /**
    * Terminate instance
    * @destory

@@ -1,4 +1,4 @@
-const helpers = require('../helpers');
+const helpers = require("../helpers");
 
 const { checkParams } = helpers;
 class Route53 {
@@ -17,6 +17,7 @@ class Route53 {
       this._route53 = new this._AWS.Route53();
     }
   }
+
   /**
    * Create new public hosted zone
    * @createZone
@@ -35,6 +36,7 @@ class Route53 {
       });
     });
   }
+
   /**
    * Delete zone
    * @deleteZone
@@ -53,6 +55,7 @@ class Route53 {
       });
     });
   }
+
   /**
    * List zones
    * @listZones
@@ -71,6 +74,7 @@ class Route53 {
       });
     });
   }
+
   /**
    * Change resource records
    * API DOCS [http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Route53.html#changeResourceRecordSets-property]

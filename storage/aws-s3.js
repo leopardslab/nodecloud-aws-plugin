@@ -1,4 +1,4 @@
-const helpers = require('../helpers');
+const helpers = require("../helpers");
 
 const { checkParams } = helpers;
 class S3 {
@@ -17,6 +17,7 @@ class S3 {
       this._s3 = new this._AWS.S3();
     }
   }
+
   /**
    * Create S3 Bucket
    * @create
@@ -35,6 +36,7 @@ class S3 {
       });
     });
   }
+
   /**
    * Delete S3 Bucket
    * @create
@@ -53,6 +55,7 @@ class S3 {
       });
     });
   }
+
   /**
    * Create multipart upload in S3
    * @createMultipartUpload
@@ -71,6 +74,7 @@ class S3 {
       });
     });
   }
+
   /**
    * List buckets
    * @list
@@ -89,6 +93,7 @@ class S3 {
       });
     });
   }
+
   /**
    * Uplaod to S3
    * @list

@@ -1,4 +1,4 @@
-const helpers = require('../helpers');
+const helpers = require("../helpers");
 
 const { checkParams } = helpers;
 class RDS {
@@ -17,6 +17,7 @@ class RDS {
       this._rds = new this._AWS.RDS();
     }
   }
+
   /**
    * Create DB instance
    * @createDBInstance
@@ -35,6 +36,7 @@ class RDS {
       });
     });
   }
+
   /**
    * Create DB Security Group
    * @createDBSecurityGroup
@@ -53,6 +55,7 @@ class RDS {
       });
     });
   }
+
   /**
    * Create DB Snapshot
    * @createDBSnapshot
@@ -71,6 +74,7 @@ class RDS {
       });
     });
   }
+
   /**
    * Modify DB instance
    * @modifyDBInstance
@@ -89,6 +93,7 @@ class RDS {
       });
     });
   }
+
   /**
    * Modify DB Snapshot
    * @modifyDBSnapshot
@@ -107,6 +112,7 @@ class RDS {
       });
     });
   }
+
   /**
    * Reboot DB instance
    * @rebootDBInstance
@@ -125,6 +131,7 @@ class RDS {
       });
     });
   }
+
   /**
    * Delete DB instance
    * @deleteDBInstance
@@ -143,6 +150,7 @@ class RDS {
       });
     });
   }
+
   /**
    * Delete DB Security Group
    * @deleteDBSecurityGroup
@@ -161,6 +169,7 @@ class RDS {
       });
     });
   }
+
   /**
    * Delete DB Snapshot
    * @deleteDBSnapshot

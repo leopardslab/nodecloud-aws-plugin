@@ -1,4 +1,4 @@
-const helpers = require('../helpers');
+const helpers = require("../helpers");
 
 const { checkParams } = helpers;
 class DirectConnect {
@@ -17,6 +17,7 @@ class DirectConnect {
       this._dc = new this._AWS.DirectConnect();
     }
   }
+
   /**
    * Creates a new connection between the customer network
    * and a specific AWS Direct Connect location
@@ -36,6 +37,7 @@ class DirectConnect {
       });
     });
   }
+
   /**
    * Displays all connections in this region
    * @describeConnections
@@ -54,6 +56,7 @@ class DirectConnect {
       });
     });
   }
+
   /**
    * Disassociates a connection from a link aggregation group (LAG)
    * @deleteConnection
@@ -72,6 +75,7 @@ class DirectConnect {
       });
     });
   }
+
   /**
    * Creates a new link aggregation group (LAG)
    * @createLag
@@ -90,6 +94,7 @@ class DirectConnect {
       });
     });
   }
+
   /**
    * Describes the link aggregation groups (LAGs)
    * @describeLags
@@ -108,6 +113,7 @@ class DirectConnect {
       });
     });
   }
+
   /**
    * Deletes a link aggregation group (LAG)
    * @deleteLag
@@ -126,6 +132,7 @@ class DirectConnect {
       });
     });
   }
+
   /**
    * Adds the specified tags to the specified Direct Connect resource
    * @tagResource
@@ -144,6 +151,7 @@ class DirectConnect {
       });
     });
   }
+
   /**
    * Removes one or more tags from the specified Direct Connect resource
    * @untagResource

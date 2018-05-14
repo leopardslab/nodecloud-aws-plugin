@@ -1,4 +1,4 @@
-const helpers = require('../helpers');
+const helpers = require("../helpers");
 
 const { checkParams } = helpers;
 class EBS {
@@ -13,6 +13,7 @@ class EBS {
     this._apiVersion = options.apiVersion;
     this._ebs = new this._AWS.EC2({ apiVersion: this._apiVersion });
   }
+
   /**
    * Create EBS image
    * @create
@@ -31,6 +32,7 @@ class EBS {
       });
     });
   }
+
   /**
    * Create EBS snapshot
    * @createSnapshot
@@ -49,6 +51,7 @@ class EBS {
       });
     });
   }
+
   /**
    * Delete EBS snapshot
    * @deleteSnapshot
@@ -67,6 +70,7 @@ class EBS {
       });
     });
   }
+
   /**
    * Describe EBS snapshots
    * @describeSnapshots
@@ -85,6 +89,7 @@ class EBS {
       });
     });
   }
+
   /**
    * Delete EBS Volume
    * @deleteVolume
@@ -103,6 +108,7 @@ class EBS {
       });
     });
   }
+
   /**
    * Describe EBS volume
    * @describeVolume
@@ -121,6 +127,7 @@ class EBS {
       });
     });
   }
+
   /**
    * Describe EBS volumes
    * @describeVolumes
