@@ -1,6 +1,6 @@
 const helpers = require("../helpers");
-
 const { checkParams } = helpers;
+
 class ECS {
   /**
    * ECS constructor

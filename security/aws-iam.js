@@ -1,11 +1,10 @@
 class IAM {
-/**
-* IAM constructor
-* @constructor
-* @param {object} aws - AWS SDK
-* @param {object} options - {apiVersion}
-*/
-
+  /**
+   * IAM constructor
+   * @constructor
+   * @param {object} aws - AWS SDK
+   * @param {object} options - {apiVersion}
+   */
   constructor(aws, options) {
     this._AWS = aws;
     this._apiVersion = options.apiVersion;
@@ -13,14 +12,14 @@ class IAM {
   }
 
   /**
-  * Create IAM Group
-  * @create
-  * @param {object} params
-  */
+   * Create IAM Group
+   * @create
+   * @param {object} params
+   */
   createGroup(params) {
-  // Create a new IAM Group
+    // Create a new IAM Group
     return new Promise((resolve, reject) => {
-      if (!params) reject(new Error('Provide params to create IAM Group'));
+      if (!params) reject(new Error("Provide params to create IAM Group"));
 
       this._iam.createGroup(params, (err, data) => {
         if (err) {
@@ -33,13 +32,13 @@ class IAM {
   }
 
   /**
-  * Delete IAM Group
-  * @delete
-  * @param {object} params
-  */
+   * Delete IAM Group
+   * @delete
+   * @param {object} params
+   */
   deleteGroup(params) {
     return new Promise((resolve, reject) => {
-      if (!params) reject(new Error('Provide params to delete IAM group'));
+      if (!params) reject(new Error("Provide params to delete IAM group"));
 
       this._iam.deleteGroup(params, (err, data) => {
         if (err) {
@@ -52,13 +51,14 @@ class IAM {
   }
 
   /**
-  * Attach policy to a given groups
-  * @attachGroupPolicy
-  * @param {object} params
-  */
+   * Attach policy to a given groups
+   * @attachGroupPolicy
+   * @param {object} params
+   */
   attachGroupPolicy(params) {
     return new Promise((resolve, reject) => {
-      if (!params) reject(new Error('Provde params to attach policy to a group'));
+      if (!params)
+        reject(new Error("Provde params to attach policy to a group"));
 
       this._iam.attachGroupPolicy(params, (err, data) => {
         if (err) {
@@ -71,13 +71,13 @@ class IAM {
   }
 
   /**
-  * Detach policy to a given groups
-  * @detachGroupPolicy
-  * @param {object} params
-  */
+   * Detach policy to a given groups
+   * @detachGroupPolicy
+   * @param {object} params
+   */
   detachGroupPolicy(params) {
     return new Promise((resolve, reject) => {
-      if (!params) reject(new Error('Provide params for detachGroupPolicy'));
+      if (!params) reject(new Error("Provide params for detachGroupPolicy"));
 
       this._iam.detachGroupPolicy(params, (err, data) => {
         if (err) {

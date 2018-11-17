@@ -1,6 +1,6 @@
 const helpers = require("../helpers");
-
 const { checkParams } = helpers;
+
 class Route53 {
   /**
    * Route53 constructor
