@@ -4,7 +4,7 @@ const providers = require('../../lib/core/providers');
 const nodeCloud = require('../../lib/');
 const nock = require('nock');
 
-const ncAWS = nodeCloud.getProvider().aws;
+const ncAWS = nodeCloud.getProviders().aws;
 const options = {
   apiVersion: '2016-11-15',
 };
