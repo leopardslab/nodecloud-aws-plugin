@@ -1,14 +1,14 @@
-const awsSDk = require('aws-sdk');
-const EC2 = require('./compute/aws-ec2');
-const ECS = require('./compute/aws-ecs');
-const EBS = require('./storage/aws-ebs');
-const S3 = require('./storage/aws-s3');
-const ELB = require('./network/aws-elb');
-const Route53 = require('./network/aws-route53');
-const DirectConnect = require('./network/aws-directconnect');
-const RDS = require('./database/aws-rds');
-const DynamoDB = require('./database/aws-dynamodb');
-const IAM = require('./security/aws-iam');
+const awsSDk = require("aws-sdk");
+const EC2 = require("./compute/aws-ec2");
+const ECS = require("./compute/aws-ecs");
+const EBS = require("./storage/aws-ebs");
+const S3 = require("./storage/aws-s3");
+const ELB = require("./network/aws-elb");
+const Route53 = require("./network/aws-route53");
+const DirectConnect = require("./network/aws-directconnect");
+const RDS = require("./database/aws-rds");
+const DynamoDB = require("./database/aws-dynamodb");
+const IAM = require("./security/aws-iam");
 
 class AWS {
   /**
@@ -25,9 +25,11 @@ class AWS {
     ) {
       if (configPath) {
         this._AWS.config.loadFromPath(configPath);
-      } else {
-        throw new Error('Provide credentials <link to docs>');
       }
+    } else {
+      throw new Error(
+        "AWS credentials not found, https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/getting-your-credentials.html"
+      );
     }
 
     return {
@@ -41,7 +43,7 @@ class AWS {
       container: this.ECS,
       rdbms: this.RDS,
       nosql: this.DynamoDB,
-      iam: this.IAM,
+      iam: this.IAM
     };
   }
   /**
@@ -158,6 +160,6 @@ class AWS {
     }
     return new IAM(this.getSDK());
   }
- }
+}
 
 module.exports = AWS;
