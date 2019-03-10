@@ -6,6 +6,7 @@ class EC2 {
    * @param {object} options - { apiVersion }
    */
   constructor(aws, options) {
+    console.log(aws.EC2);
     this._AWS = aws;
     this._apiVersion = options.apiVersion;
     this._ec2 = new this._AWS.EC2({ apiVersion: this._apiVersion });
@@ -97,7 +98,7 @@ class EC2 {
         if (err) {
           reject(err);
         } else if (data) {
-          resolve(data.StoppingInstances);
+          resolve(data);
         }
       });
     });

@@ -11,7 +11,7 @@ class EBS {
   constructor(aws, options) {
     this._AWS = aws;
     this._apiVersion = options.apiVersion;
-    this._ebs = new this._AWS.EC2({ apiVersion: this._apiVersion });
+    this._ebs = new this._AWS.EBS({ apiVersion: this._apiVersion });
   }
 
   /**
