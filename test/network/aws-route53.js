@@ -1,15 +1,16 @@
-const chai = require("chai");
+const chai = require('chai');
 const assert = chai.assert;
-const providers = require("../../lib/core/providers");
-const nodeCloud = require("../../lib");
-const nock = require("nock");
+const awsPlugin = require('../../aws');
 
-const ncAWS = nodeCloud.getProviders().aws;
 const options = {
-  apiVersion: "2016-11-15"
+  apiVersion: '2016-11-15'
 };
-const route53 = ncAWS.dns(options);
 
-describe("AWS ELB", () => {
+const awsSDk = require("../aws-mock");
+const ncAwsPlugin = new awsPlugin(options, awsSDk);
+const elb = ncAwsPlugin.dns(options);
+
+
+describe("AWS Route53", () => {
   before(() => {});
 });
