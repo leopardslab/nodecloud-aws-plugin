@@ -1,5 +1,5 @@
 # nodecloud-aws-plugin
-Google Cloud plugin for [nodecloud](https://github.com/cloudlibz/nodecloud)
+Amazon web services plugin for [nodecloud](https://github.com/cloudlibz/nodecloud)
 
 ## 🚀 Install
 
