@@ -1,7 +1,7 @@
 {
   "name": "nodecloud-aws-plugin",
-  "version": "1.0.0",
-  "description": "AWS Wrapper for NodeCloud Core",
+  "version": "1.0.0-beta.0",
+  "description": "AWS plugin for NodeCloud core",
   "main": "index.js",
   "scripts": {
     "test": "mocha test/*"
