@@ -46,7 +46,7 @@ class ELB {
     checkParams(params);
 
     return new Promise((resolve, reject) => {
-      this._elb.deleteLoadBalancerListeners(params, (err, data) => {
+      this._elb.deleteLoadBalancer(params, (err, data) => {
         if (err) {
           reject(err);
         } else {
