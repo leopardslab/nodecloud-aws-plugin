@@ -65,7 +65,7 @@ class Route53 {
     checkParams(params);
     // list zones
     return new Promise((resolve, reject) => {
-      this._route53.listHostedZone(params, (err, data) => {
+      this._route53.listHostedZones(params, (err, data) => {
         if (err) {
           reject(err);
         } else {
