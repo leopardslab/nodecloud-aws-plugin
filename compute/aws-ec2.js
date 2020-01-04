@@ -112,17 +112,19 @@ class EC2 {
   monitor(params) {
     return new Promise((resolve, reject) => {
       this._ec2.monitorInstances(params, function(err, data) {
-        if (err && err.code === 'DryRunOperation') {
+        if (err && err.code === "DryRunOperation") {
           params.DryRun = false;
           this._ec2.monitorInstances(params, function(err, data) {
-              if (err) {
-                reject(err);
-              } else if (data) {
-                resolve(data);
-              }
+            if (err) {
+              reject(err);
+            } else if (data) {
+              resolve(data);
+            }
           });
+        } else if (err && err.code === "UnauthorizedOperation") {
+          reject("Permission denied");
         } else {
-          reject('Permission denied');
+          reject(err);
         }
       });
     });
@@ -136,17 +138,19 @@ class EC2 {
   unmonitor(params) {
     return new Promise((resolve, reject) => {
       this._ec2.unmonitorInstances(params, function(err, data) {
-        if (err && err.code === 'DryRunOperation') {
+        if (err && err.code === "DryRunOperation") {
           params.DryRun = false;
           this._ec2.unmonitorInstances(params, function(err, data) {
-              if (err) {
-                reject(err);
-              } else if (data) {
-                resolve(data);
-              }
+            if (err) {
+              reject(err);
+            } else if (data) {
+              resolve(data);
+            }
           });
+        } else if (err && err.code === "UnauthorizedOperation") {
+          reject("Permission denied");
         } else {
-          reject('Permission denied');
+          reject(err);
         }
       });
     });
