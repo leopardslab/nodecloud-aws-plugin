@@ -21,7 +21,7 @@ It is an array of supported providers.
 3.  `libName` : Library name which has to be installed before loading a provider.
 
 Config file can contain array of objects for all providers and all will be loaded.
-Supported values for `name` : azure, google, aws
+Supported values for `name` : azure, google, aws, alicloud, digitalocean.
 
 ```js
 const providers = [
@@ -34,7 +34,7 @@ const providers = [
 ]
 
 module.exports = providers;
-``` 
+```
 
 ## 💻 Development
 
