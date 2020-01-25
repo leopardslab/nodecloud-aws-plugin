@@ -105,6 +105,58 @@ class EC2 {
   }
 
   /**
+   * Start instance monitoring
+   * @monitor
+   * @param {object} params
+   */
+  monitor(params) {
+    return new Promise((resolve, reject) => {
+      this._ec2.monitorInstances(params, function(err, data) {
+        if (err && err.code === "DryRunOperation") {
+          params.DryRun = false;
+          this._ec2.monitorInstances(params, function(err, data) {
+            if (err) {
+              reject(err);
+            } else if (data) {
+              resolve(data);
+            }
+          });
+        } else if (err && err.code === "UnauthorizedOperation") {
+          reject("Permission denied");
+        } else {
+          reject(err);
+        }
+      });
+    });
+  }
+
+  /**
+   * Stop instance monitoring
+   * @unmonitor
+   * @param {object} params
+   */
+  unmonitor(params) {
+    return new Promise((resolve, reject) => {
+      this._ec2.unmonitorInstances(params, function(err, data) {
+        if (err && err.code === "DryRunOperation") {
+          params.DryRun = false;
+          this._ec2.unmonitorInstances(params, function(err, data) {
+            if (err) {
+              reject(err);
+            } else if (data) {
+              resolve(data);
+            }
+          });
+        } else if (err && err.code === "UnauthorizedOperation") {
+          reject("Permission denied");
+        } else {
+          reject(err);
+        }
+      });
+    });
+  }
+
+  /**
    * Reboot instance
    * @reboot
    * @param {object} params
