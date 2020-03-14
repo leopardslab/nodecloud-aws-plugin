@@ -6,7 +6,6 @@ class EC2 {
    * @param {object} options - { apiVersion }
    */
   constructor(aws, options) {
-    console.log(aws.EC2);
     this._AWS = aws;
     this._apiVersion = options.apiVersion;
     this._ec2 = new this._AWS.EC2({ apiVersion: this._apiVersion });
@@ -99,6 +98,58 @@ class EC2 {
           reject(err);
         } else if (data) {
           resolve(data);
+        }
+      });
+    });
+  }
+
+  /**
+   * Start instance monitoring
+   * @monitor
+   * @param {object} params
+   */
+  monitor(params) {
+    return new Promise((resolve, reject) => {
+      this._ec2.monitorInstances(params, function(err, data) {
+        if (err && err.code === "DryRunOperation") {
+          params.DryRun = false;
+          this._ec2.monitorInstances(params, function(err, data) {
+            if (err) {
+              reject(err);
+            } else if (data) {
+              resolve(data);
+            }
+          });
+        } else if (err && err.code === "UnauthorizedOperation") {
+          reject("Permission denied");
+        } else {
+          reject(err);
+        }
+      });
+    });
+  }
+
+  /**
+   * Stop instance monitoring
+   * @unmonitor
+   * @param {object} params
+   */
+  unmonitor(params) {
+    return new Promise((resolve, reject) => {
+      this._ec2.unmonitorInstances(params, function(err, data) {
+        if (err && err.code === "DryRunOperation") {
+          params.DryRun = false;
+          this._ec2.unmonitorInstances(params, function(err, data) {
+            if (err) {
+              reject(err);
+            } else if (data) {
+              resolve(data);
+            }
+          });
+        } else if (err && err.code === "UnauthorizedOperation") {
+          reject("Permission denied");
+        } else {
+          reject(err);
         }
       });
     });

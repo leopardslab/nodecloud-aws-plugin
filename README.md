@@ -11,7 +11,7 @@ $ npm install nodecloud-aws-plugin
 
 [How to get your AWS credentials](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/getting-your-credentials.html)
 
-Make sure you have `.nc.config` file in the project root and have `nodecloud-core` installed.
+Make sure you have `.nc.config` file in the project root and have `nodecloud` installed.
 
 Content of `.nc.config` file is assumed as the following json structure.
 It is an array of supported providers.
@@ -21,7 +21,7 @@ It is an array of supported providers.
 3.  `libName` : Library name which has to be installed before loading a provider.
 
 Config file can contain array of objects for all providers and all will be loaded.
-Supported values for `name` : azure, google, aws
+Supported values for `name` : azure, google, aws, alicloud, digitalocean.
 
 ```js
 const providers = [
@@ -34,7 +34,7 @@ const providers = [
 ]
 
 module.exports = providers;
-``` 
+```
 
 ## 💻 Development
 
@@ -42,7 +42,11 @@ module.exports = providers;
 $ git clone https://github.com/cloudliz/nodecloud-aws-plugin
 $ cd nodecloud-aws-plugin
 $ npm link
-$ git clone https://github.com/cloudliz/nodecloud
-$ cd nodecloud
+$ cd .. && mkdir nodecloud-dev && cd nodecloud-dev
 $ npm link nodecloud-aws-plugin
+$ cd .. && git clone https://github.com/cloudliz/nodecloud
+$ cd nodecloud
+$ npm link
+$ cd nodecloud-dev
+$ npm link nodecloud
 ```

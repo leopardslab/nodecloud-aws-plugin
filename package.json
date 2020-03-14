@@ -1,6 +1,6 @@
 {
   "name": "nodecloud-aws-plugin",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "description": "AWS plugin for NodeCloud core",
   "main": "index.js",
   "scripts": {
