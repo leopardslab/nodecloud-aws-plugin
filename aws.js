@@ -16,6 +16,7 @@ class AWS {
    */
   constructor(configPath, awsSDk) {
     this._AWS = awsSDk;
+    console.log(configPath)
     
     if (
       !this._AWS.config.credentials ||
