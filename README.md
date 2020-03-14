@@ -42,7 +42,11 @@ module.exports = providers;
 $ git clone https://github.com/cloudliz/nodecloud-aws-plugin
 $ cd nodecloud-aws-plugin
 $ npm link
-$ git clone https://github.com/cloudliz/nodecloud
-$ cd nodecloud
+$ cd .. && mkdir nodecloud-dev && cd nodecloud-dev
 $ npm link nodecloud-aws-plugin
+$ cd .. && git clone https://github.com/cloudliz/nodecloud
+$ cd nodecloud
+$ npm link
+$ cd nodecloud-dev
+$ npm link nodecloud
 ```
