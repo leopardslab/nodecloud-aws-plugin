@@ -4,7 +4,7 @@
   "description": "AWS plugin for NodeCloud core",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test"
+    "test": "mocha test/*"
   },
   "repository": {
     "type": "git",
