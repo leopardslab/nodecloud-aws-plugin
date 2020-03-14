@@ -1,4 +1,4 @@
-# nodecloud-aws-plugin
+# nodecloud-aws-plugin ![nodecloud-aws-plugin CI](https://github.com/cloudlibz/nodecloud-aws-plugin/workflows/nodecloud-aws-plugin%20CI/badge.svg)
 Amazon web services plugin for [nodecloud](https://github.com/cloudlibz/nodecloud)
 
 ## 🚀 Install
