@@ -11,7 +11,7 @@ $ npm install nodecloud-aws-plugin
 
 [How to get your AWS credentials](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/getting-your-credentials.html)
 
-Make sure you have `.nc.config` file in the project root and have `nodecloud-core` installed.
+Make sure you have `.nc.config` file in the project root and have `nodecloud` installed.
 
 Content of `.nc.config` file is assumed as the following json structure.
 It is an array of supported providers.
