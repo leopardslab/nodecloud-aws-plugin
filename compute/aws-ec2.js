@@ -8,7 +8,9 @@ class EC2 {
   constructor(aws, options) {
     this._AWS = aws;
     this._apiVersion = options.apiVersion;
-    this._ec2 = new this._AWS.EC2({ apiVersion: this._apiVersion });
+    this._ec2 = new this._AWS.EC2({
+      apiVersion: this._apiVersion
+    });
   }
 
   /**
@@ -180,6 +182,57 @@ class EC2 {
   destroy(params) {
     return new Promise((resolve, reject) => {
       this._ec2.terminateInstances(params, (err, data) => {
+        if (err) reject(err, err.stack);
+        else {
+          resolve(data);
+        }
+      });
+    });
+  }
+
+  /**
+   * Describing Your Key Pairs
+   * @Keypairsdetails
+   *  No params needed
+   */
+
+  Keypairsdetails() {
+    return new Promise((resolve, reject) => {
+      this._ec2.describeKeyPairs((err, data) => {
+        if (err) reject(err, err.stack);
+        else {
+          resolve(data);
+        }
+      });
+    });
+  }
+
+  /**
+   * Describing Your Key Pairs
+   * @generatekeypairs
+   * @param {object} params
+   */
+
+  generatekeypairs(params) {
+    return new Promise((resolve, reject) => {
+      this._ec2.createKeyPair(params, (err, data) => {
+        if (err) reject(err, err.stack);
+        else {
+          resolve(data);
+        }
+      });
+    });
+  }
+
+  /**
+   * Describing Your Key Pairs
+   * @removekeypairs
+   * @param {object} params
+   */
+
+  removekeypairs(params) {
+    return new Promise((resolve, reject) => {
+      this._ec2.deleteKeyPair(params, (err, data) => {
         if (err) reject(err, err.stack);
         else {
           resolve(data);
