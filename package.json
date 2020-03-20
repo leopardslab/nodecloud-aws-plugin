@@ -1,6 +1,6 @@
 {
   "name": "nodecloud-aws-plugin",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "description": "AWS plugin for NodeCloud core",
   "main": "index.js",
   "scripts": {
@@ -22,10 +22,19 @@
   },
   "homepage": "https://github.com/cloudlibz/nodecloud-aws#readme",
   "dependencies": {
+<<<<<<< HEAD
     "aws-sdk": "^2.642.0",
     "chai": "^4.2.0",
     "dotenv": "^8.2.0",
     "mocha": "^6.0.2",
     "nock": "^10.0.6"
+=======
+    "aws-sdk": "^2.229.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^7.1.0",
+    "nock": "^12.0.2"
+>>>>>>> 504a5f0021252753ca2e23597c92bacb8c1b295d
   }
 }

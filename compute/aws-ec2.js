@@ -6,7 +6,6 @@ class EC2 {
    * @param {object} options - { apiVersion }
    */
   constructor(aws, options) {
-    console.log(aws.EC2);
     this._AWS = aws;
     this._apiVersion = options.apiVersion;
     this._ec2 = new this._AWS.EC2({ apiVersion: this._apiVersion });
@@ -210,6 +209,13 @@ class EC2 {
   }
 
 
+  /**
+   * Describing Your Key Pairs
+   * @generatekeypairs
+   * @param {object} params
+   */
+
+
   generatekeypairs(params) {
 
 
@@ -224,6 +230,13 @@ class EC2 {
     });
    }
   
+
+   /**
+   * Describing Your Key Pairs
+   * @removekeypairs
+   * @param {object} params
+   */
+
   removekeypairs(params) {
     return new Promise((resolve, reject) => {
       this._ec2.deleteKeyPair(params, (err, data) => {

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const EC2 = require("./compute/aws-ec2");
 const ECS = require("./compute/aws-ecs");
 const EBS = require("./storage/aws-ebs");
@@ -8,6 +9,19 @@ const DirectConnect = require("./network/aws-directconnect");
 const RDS = require("./database/aws-rds");
 const DynamoDB = require("./database/aws-dynamodb");
 const IAM = require("./security/aws-iam");
+=======
+const ec2 = require("./compute/aws-ec2");
+const ecs = require("./compute/aws-ecs");
+const ebs = require("./storage/aws-ebs");
+const s3 = require("./storage/aws-s3");
+const elb = require("./network/aws-elb");
+const route53 = require("./network/aws-route53");
+const directConnect = require("./network/aws-directconnect");
+const rds = require("./database/aws-rds");
+const dynamoDB = require("./database/aws-dynamodb");
+const iam = require("./security/aws-iam");
+
+>>>>>>> 504a5f0021252753ca2e23597c92bacb8c1b295d
 class AWS {
   /**
    * Expose AWS APIs
@@ -15,7 +29,12 @@ class AWS {
    */
   constructor(configPath, awsSDk) {
     this._AWS = awsSDk;
+<<<<<<< HEAD
 
+=======
+    console.log(configPath)
+    
+>>>>>>> 504a5f0021252753ca2e23597c92bacb8c1b295d
     if (
       !this._AWS.config.credentials ||
       !this._AWS.config.credentials.accessKeyId ||
@@ -33,16 +52,16 @@ class AWS {
 
     return {
       getSDK: () => this._AWS,
-      compute: this.EC2,
-      storage: this.EBS,
-      bucket: this.S3,
-      loadbalancer: this.ELB,
-      dns: this.Route53,
-      peering: this.DirectConnect,
-      container: this.ECS,
-      rdbms: this.RDS,
-      nosql: this.DynamoDB,
-      iam: this.IAM
+      compute: this.ec2,
+      storage: this.ebs,
+      bucket: this.s3,
+      loadbalancer: this.elb,
+      dns: this.route53,
+      peering: this.directConnect,
+      container: this.ecs,
+      rdbms: this.rds,
+      nosql: this.dynamoDB,
+      iam: this.iam
     };
   }
   /**
@@ -50,114 +69,114 @@ class AWS {
    * @EC2
    * @param {object} options - { apiVersion }
    */
-  EC2(options) {
+  ec2(options) {
     this._apiVersion = options.apiVersion;
-    return new EC2(this.getSDK(), this._apiVersion);
+    return new ec2(this.getSDK(), this._apiVersion);
   }
   /**
    * EBS Wrapper
    * @EBS
    * @param {object} options - { apiVersion }
    */
-  EBS(options) {
+  ebs(options) {
     this._apiVersion = options.apiVersion;
-    return new EBS(this.getSDK(), this._apiVersion);
+    return new ebs(this.getSDK(), this._apiVersion);
   }
   /**
    * S3 Wrapper
    * @EBS
    * @param {object} options - { apiVersion }
    */
-  S3(options) {
+  s3(options) {
     if (options._apiVersion) {
       this._apiVersion = options.apiVersion;
-      return new S3(this.getSDK(), this.apiVersion);
+      return new s3(this.getSDK(), this.apiVersion);
     }
-    return new S3(this.getSDK());
+    return new s3(this.getSDK());
   }
   /**
    * ELB Wrapper
    * @ELB
    * @param {object} options - { apiVersion }
    */
-  ELB(options) {
+  elb(options) {
     if (options._apiVersion) {
       this._apiVersion = options.apiVersion;
-      return new ELB(this.getSDK(), this.apiVersion);
+      return new elb(this.getSDK(), this.apiVersion);
     }
-    return new ELB(this.getSDK());
+    return new elb(this.getSDK());
   }
   /**
    * Route53 wrapper
    * @Route53
    * @param {object} options - { apiVersion }
    */
-  Route53(options) {
+  route53(options) {
     if (options._apiVersion) {
       this._apiVersion = options.apiVersion;
-      return new Route53(this.getSDK(), this.apiVersion);
+      return new route53(this.getSDK(), this.apiVersion);
     }
-    return new Route53(this.getSDK());
+    return new route53(this.getSDK());
   }
   /**
    * DirectConnect wrapper
    * @DirectConnect
    * @param {object} options - { apiVersion }
    */
-  DirectConnect(options) {
+  directConnect(options) {
     if (options._apiVersion) {
       this._apiVersion = options.apiVersion;
-      return new DirectConnect(this.getSDK(), this.apiVersion);
+      return new directConnect(this.getSDK(), this.apiVersion);
     }
-    return new DirectConnect(this.getSDK());
+    return new directConnect(this.getSDK());
   }
   /**
    * ECS wrapper
    * @ECS
    * @param {object} options - { apiVersion }
    */
-  ECS(options) {
+  ecs(options) {
     if (options._apiVersion) {
       this._apiVersion = options.apiVersion;
-      return new ECS(this.getSDK(), this.apiVersion);
+      return new ecs(this.getSDK(), this.apiVersion);
     }
-    return new ECS(this.getSDK());
+    return new ecs(this.getSDK());
   }
   /**
    * RDS wrapper
    * @RDS
    * @param {object} options - { apiVersion }
    */
-  RDS(options) {
+  rds(options) {
     if (options._apiVersion) {
       this._apiVersion = options.apiVersion;
-      return new RDS(this.getSDK(), this.apiVersion);
+      return new rds(this.getSDK(), this.apiVersion);
     }
-    return new RDS(this.getSDK());
+    return new rds(this.getSDK());
   }
   /**
    * DynamoDB wrapper
    * @RDS
    * @param {object} options - { apiVersion }
    */
-  DynamoDB(options) {
+  dynamoDB(options) {
     if (options._apiVersion) {
       this._apiVersion = options.apiVersion;
-      return new DynamoDB(this.getSDK(), this.apiVersion);
+      return new dynamoDB(this.getSDK(), this.apiVersion);
     }
-    return new DynamoDB(this.getSDK());
+    return new dynamoDB(this.getSDK());
   }
   /**
    * IAM wrapper
    * @IAM
    * @param {object} options - { apiVersion }
    */
-  IAM(options) {
+  iam(options) {
     if (options.apiVersion) {
       this._apiVersion = options.apiVersion;
-      return new IAM(this.getSDK(), options);
+      return new iam(this.getSDK(), options);
     }
-    return new IAM(this.getSDK());
+    return new iam(this.getSDK());
   }
 }
 

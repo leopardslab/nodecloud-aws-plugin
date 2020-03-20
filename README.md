@@ -1,4 +1,4 @@
-# nodecloud-aws-plugin
+# nodecloud-aws-plugin ![nodecloud-aws-plugin CI](https://github.com/cloudlibz/nodecloud-aws-plugin/workflows/nodecloud-aws-plugin%20CI/badge.svg)
 Amazon web services plugin for [nodecloud](https://github.com/cloudlibz/nodecloud)
 
 ## 🚀 Install
@@ -11,7 +11,7 @@ $ npm install nodecloud-aws-plugin
 
 [How to get your AWS credentials](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/getting-your-credentials.html)
 
-Make sure you have `.nc.config` file in the project root and have `nodecloud-core` installed.
+Make sure you have `.nc.config` file in the project root and have `nodecloud` installed.
 
 Content of `.nc.config` file is assumed as the following json structure.
 It is an array of supported providers.
@@ -42,7 +42,11 @@ module.exports = providers;
 $ git clone https://github.com/cloudliz/nodecloud-aws-plugin
 $ cd nodecloud-aws-plugin
 $ npm link
-$ git clone https://github.com/cloudliz/nodecloud
-$ cd nodecloud
+$ cd .. && mkdir nodecloud-dev && cd nodecloud-dev
 $ npm link nodecloud-aws-plugin
+$ cd .. && git clone https://github.com/cloudliz/nodecloud
+$ cd nodecloud
+$ npm link
+$ cd nodecloud-dev
+$ npm link nodecloud
 ```
