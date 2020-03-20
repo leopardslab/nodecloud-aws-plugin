@@ -11,7 +11,7 @@ class EC2 {
     this._apiVersion = options.apiVersion;
     this._ec2 = new this._AWS.EC2({ apiVersion: this._apiVersion });
   }
-
+   
   /**
    * Create EC2 instance
    * @create
@@ -188,6 +188,55 @@ class EC2 {
       });
     });
   }
+
+/**
+   * Describing Your Key Pairs
+   * @Keypairsdetails
+   *  No params needed
+   */
+
+ Keypairsdetails(){
+
+   return new Promise((resolve, reject)=>{
+
+     this._ec2.describeKeyPairs((err, data)=>{
+      if (err) 
+      reject(err, err.stack);
+      else {
+        resolve('key pair removed');
+      }
+     });
+   });
+  }
+
+
+  generatekeypairs(params) {
+
+
+
+    return new Promise((resolve, reject) => {
+      this._ec2.createKeyPair(params, (err, data) => {
+        if (err) reject(err, err.stack);
+        else {
+          resolve(data);
+        }
+      });
+    });
+   }
+  
+  removekeypairs(params) {
+    return new Promise((resolve, reject) => {
+      this._ec2.deleteKeyPair(params, (err, data) => {
+        if (err) reject(err, err.stack);
+        else {
+          resolve(data);
+        }
+      });
+    });
+  }
+
 }
+
+
 
 module.exports = EC2;

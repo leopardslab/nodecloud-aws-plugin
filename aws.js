@@ -8,7 +8,6 @@ const DirectConnect = require("./network/aws-directconnect");
 const RDS = require("./database/aws-rds");
 const DynamoDB = require("./database/aws-dynamodb");
 const IAM = require("./security/aws-iam");
-
 class AWS {
   /**
    * Expose AWS APIs
@@ -16,7 +15,7 @@ class AWS {
    */
   constructor(configPath, awsSDk) {
     this._AWS = awsSDk;
-    
+
     if (
       !this._AWS.config.credentials ||
       !this._AWS.config.credentials.accessKeyId ||
