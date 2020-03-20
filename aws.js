@@ -1,13 +1,14 @@
-const EC2 = require("./compute/aws-ec2");
-const ECS = require("./compute/aws-ecs");
-const EBS = require("./storage/aws-ebs");
-const S3 = require("./storage/aws-s3");
-const ELB = require("./network/aws-elb");
-const Route53 = require("./network/aws-route53");
-const DirectConnect = require("./network/aws-directconnect");
-const RDS = require("./database/aws-rds");
-const DynamoDB = require("./database/aws-dynamodb");
-const IAM = require("./security/aws-iam");
+const ec2 = require("./compute/aws-ec2");
+const ecs = require("./compute/aws-ecs");
+const ebs = require("./storage/aws-ebs");
+const s3 = require("./storage/aws-s3");
+const elb = require("./network/aws-elb");
+const route53 = require("./network/aws-route53");
+const directConnect = require("./network/aws-directconnect");
+const rds = require("./database/aws-rds");
+const dynamoDB = require("./database/aws-dynamodb");
+const iam = require("./security/aws-iam");
+
 class AWS {
   /**
    * Expose AWS APIs
@@ -15,6 +16,8 @@ class AWS {
    */
   constructor(configPath, awsSDk) {
     this._AWS = awsSDk;
+    console.log(configPath)
+    
     if (
       !this._AWS.config.credentials ||
       !this._AWS.config.credentials.accessKeyId ||
