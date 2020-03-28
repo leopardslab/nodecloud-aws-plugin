@@ -8,6 +8,7 @@ const directConnect = require("./network/aws-directconnect");
 const rds = require("./database/aws-rds");
 const dynamoDB = require("./database/aws-dynamodb");
 const iam = require("./security/aws-iam");
+const cloudWatch = require("./monitoring/aws-cloudwatch");
 
 class AWS {
   /**
@@ -17,7 +18,7 @@ class AWS {
   constructor(configPath, awsSDk) {
     this._AWS = awsSDk;
     console.log(configPath)
-    
+
     if (
       !this._AWS.config.credentials ||
       !this._AWS.config.credentials.accessKeyId ||
@@ -44,7 +45,8 @@ class AWS {
       container: this.ecs,
       rdbms: this.rds,
       nosql: this.dynamoDB,
-      iam: this.iam
+      iam: this.iam,
+      monitoring: this.cloudWatch
     };
   }
   /**
@@ -160,6 +162,18 @@ class AWS {
       return new iam(this.getSDK(), options);
     }
     return new iam(this.getSDK());
+  }
+  /**
+  * CloudWatch wrapper
+  * @CloudWatch
+  * @param {object} options - { apiVersion }
+  */
+  cloudWatch(options) {
+    if (options.apiVersion) {
+      this._apiVersion = options.apiVersion;
+      return new cloudWatch(this.getSDK(), options);
+    }
+    return new cloudWatch(this.getSDK());
   }
 }
 
