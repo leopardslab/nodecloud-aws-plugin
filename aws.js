@@ -8,6 +8,7 @@ const directConnect = require("./network/aws-directconnect");
 const rds = require("./database/aws-rds");
 const dynamoDB = require("./database/aws-dynamodb");
 const iam = require("./security/aws-iam");
+const elasticBeanstalk = require("./compute/elasticBeanstalk");
 
 class AWS {
   /**
@@ -16,8 +17,6 @@ class AWS {
    */
   constructor(configPath, awsSDk) {
     this._AWS = awsSDk;
-    console.log(configPath)
-    
     if (
       !this._AWS.config.credentials ||
       !this._AWS.config.credentials.accessKeyId ||
@@ -44,7 +43,8 @@ class AWS {
       container: this.ecs,
       rdbms: this.rds,
       nosql: this.dynamoDB,
-      iam: this.iam
+      iam: this.iam,
+      elasticBeanstalk: this.elasticBeanstalk
     };
   }
   /**
@@ -161,6 +161,17 @@ class AWS {
     }
     return new iam(this.getSDK());
   }
+
+  /**
+   * elasticBeanstalk wrapper
+   * @IAM
+   * @param {object} options - { apiVersion }
+   */
+  elasticBeanstalk(options) {
+    this._apiVersion = options.apiVersion;
+    return new elasticBeanstalk(this.getSDK(), options);
+  }
+
 }
 
 module.exports = AWS;
