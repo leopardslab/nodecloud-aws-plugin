@@ -9,6 +9,7 @@ const rds = require("./database/aws-rds");
 const dynamoDB = require("./database/aws-dynamodb");
 const iam = require("./security/aws-iam");
 const elasticBeanstalk = require("./compute/elasticBeanstalk");
+const eks = require("./compute/aws-eks");
 
 class AWS {
   /**
@@ -17,6 +18,7 @@ class AWS {
    */
   constructor(configPath, awsSDk) {
     this._AWS = awsSDk;
+
     if (
       !this._AWS.config.credentials ||
       !this._AWS.config.credentials.accessKeyId ||
@@ -44,9 +46,11 @@ class AWS {
       rdbms: this.rds,
       nosql: this.dynamoDB,
       iam: this.iam,
-      elasticBeanstalk: this.elasticBeanstalk
+      elasticBeanstalk: this.elasticBeanstalk,
+      kubernetes: this.kubernetes
     };
   }
+
   /**
    * EC2 Wrapper
    * @EC2
@@ -56,11 +60,13 @@ class AWS {
     this._apiVersion = options.apiVersion;
     return new ec2(this.getSDK(), this._apiVersion);
   }
+
   /**
    * EBS Wrapper
    * @EBS
    * @param {object} options - { apiVersion }
    */
+
   ebs(options) {
     this._apiVersion = options.apiVersion;
     return new ebs(this.getSDK(), this._apiVersion);
@@ -70,6 +76,7 @@ class AWS {
    * @EBS
    * @param {object} options - { apiVersion }
    */
+
   s3(options) {
     if (options._apiVersion) {
       this._apiVersion = options.apiVersion;
@@ -77,6 +84,7 @@ class AWS {
     }
     return new s3(this.getSDK());
   }
+
   /**
    * ELB Wrapper
    * @ELB
@@ -89,6 +97,7 @@ class AWS {
     }
     return new elb(this.getSDK());
   }
+
   /**
    * Route53 wrapper
    * @Route53
@@ -101,6 +110,7 @@ class AWS {
     }
     return new route53(this.getSDK());
   }
+
   /**
    * DirectConnect wrapper
    * @DirectConnect
@@ -113,6 +123,7 @@ class AWS {
     }
     return new directConnect(this.getSDK());
   }
+
   /**
    * ECS wrapper
    * @ECS
@@ -125,6 +136,7 @@ class AWS {
     }
     return new ecs(this.getSDK());
   }
+
   /**
    * RDS wrapper
    * @RDS
@@ -137,6 +149,7 @@ class AWS {
     }
     return new rds(this.getSDK());
   }
+
   /**
    * DynamoDB wrapper
    * @RDS
@@ -149,6 +162,7 @@ class AWS {
     }
     return new dynamoDB(this.getSDK());
   }
+
   /**
    * IAM wrapper
    * @IAM
@@ -172,6 +186,19 @@ class AWS {
     return new elasticBeanstalk(this.getSDK(), options);
   }
 
+  
+  /**
+   * Kubernetes wrapper
+   * @kubernetes
+   * @param {object} options - { apiVersion }
+   */
+  kubernetes(options) {
+    if (options.apiVersion) {
+      this._apiVersion = options.apiVersion;
+      return new eks(this.getSDK(), options);
+    }
+    return new eks(this.getSDK());
+  }
 }
 
 module.exports = AWS;
