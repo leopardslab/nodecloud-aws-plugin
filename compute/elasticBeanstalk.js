@@ -254,9 +254,9 @@ class ElasticBeanstalk {
      * @describeAccountAttributes
      * @param {object} params
      */
-    describeAccountAttributes(params) {
+    describeAccountAttributes() {
         return new Promise((resolve, reject) => {
-            this._elasticBeanstalk.describeAccountAttributes(params, (error, data) => {
+            this._elasticBeanstalk.describeAccountAttributes((error, data) => {
                 if (error) {
                     reject(error);
                 } else {
@@ -322,7 +322,7 @@ class ElasticBeanstalk {
      * @rebuildEnvironment
      * @param {object} params
      */
-    rebuildEnvironment() {
+    rebuildEnvironment(params) {
         return new Promise((resolve, reject) => {
             this._elasticBeanstalk.rebuildEnvironment(params, (error, data) => {
                 if (error) {
