@@ -8,6 +8,7 @@ const directConnect = require("./network/aws-directconnect");
 const rds = require("./database/aws-rds");
 const dynamoDB = require("./database/aws-dynamodb");
 const iam = require("./security/aws-iam");
+const elasticBeanstalk = require("./compute/elasticBeanstalk");
 const eks = require("./compute/aws-eks");
 
 class AWS {
@@ -45,6 +46,7 @@ class AWS {
       rdbms: this.rds,
       nosql: this.dynamoDB,
       iam: this.iam,
+      elasticBeanstalk: this.elasticBeanstalk,
       kubernetes: this.kubernetes
     };
   }
@@ -173,6 +175,17 @@ class AWS {
     }
     return new iam(this.getSDK());
   }
+
+  /**
+   * elasticBeanstalk wrapper
+   * @IAM
+   * @param {object} options - { apiVersion }
+   */
+  elasticBeanstalk(options) {
+    this._apiVersion = options.apiVersion;
+    return new elasticBeanstalk(this.getSDK(), options);
+  }
+
   
   /**
    * Kubernetes wrapper
