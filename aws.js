@@ -46,7 +46,7 @@ class AWS {
       rdbms: this.rds,
       nosql: this.dynamoDB,
       iam: this.iam,
-      elasticBeanstalk: this.elasticBeanstalk,
+      PaaS: this.elasticBeanstalk,
       kubernetes: this.kubernetes
     };
   }
@@ -186,7 +186,7 @@ class AWS {
     return new elasticBeanstalk(this.getSDK(), options);
   }
 
-  
+
   /**
    * Kubernetes wrapper
    * @kubernetes
